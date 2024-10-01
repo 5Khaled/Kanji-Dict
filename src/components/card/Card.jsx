@@ -34,7 +34,7 @@ const KanjiCard = () => {
 
   return (
     kanjiData && (
-      <main className="flex min-h-[calc(100dvh_-_60px)] flex-col items-center max-lg:items-stretch p-7">
+      <main className="flex min-h-[calc(100dvh_-_60px)] flex-col items-center max-sm:items-stretch p-7">
         <div className="relative top-5 grid grid-cols-[0fr_1fr] gap-5 rounded border border-white border-opacity-35 p-5 backdrop-blur-md max-sm:grid-cols-1">
           <aside className="flex flex-col gap-3 items-center ">
             <section className="flex flex-col gap-3">
@@ -46,13 +46,23 @@ const KanjiCard = () => {
               <Readings readings={kanjiData.kunyomi_ja} type="kun" />
             </section>
           </aside>
-          <section className="flex flex-col items-stretch gap-3 rounded-xl">
-            <KanjiMeanings Meanings={kanjiData.kmeaning} />
-            {/* <Examples examples={kanjiData.examples} /> */}
-            <div className="flex flex-wrap gap-5">
-              <Primitives primitives={kanjiData.in} kanji={KANJI} type="out" />
-              <Primitives primitives={kanjiData.out} kanji={KANJI} type="in" />
-            </div>
+          <section className="flex flex-col items-start">
+            <main className="flex flex-col gap-3">
+              <KanjiMeanings Meanings={kanjiData.kmeaning} />
+              {/* <Examples examples={kanjiData.examples} /> */}
+              <div className="flex flex-wrap gap-5">
+                <Primitives
+                  primitives={kanjiData.in}
+                  kanji={KANJI}
+                  type="out"
+                />
+                <Primitives
+                  primitives={kanjiData.out}
+                  kanji={KANJI}
+                  type="in"
+                />
+              </div>
+            </main>
           </section>
         </div>
       </main>

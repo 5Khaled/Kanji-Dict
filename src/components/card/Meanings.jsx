@@ -5,10 +5,9 @@ function KanjiMeanings({ Meanings }) {
       <header className="bg-white bg-opacity-80 px-10 py-2 text-center font-bold text-black">
         Meanings
       </header>
-      {/* <hr className="" /> */}
       <div className="flex flex-wrap gap-0.5 bg-black bg-opacity-35 p-1">
         {Meanings &&
-          Meanings.split(", ").map((m, i) => (
+          [...Meanings.split(", "), ...Meanings.split(", ")].map((m, i) => (
             <div
               className="flex-grow rounded bg-black bg-opacity-10 px-3 py-2 text-center"
               key={i}
