@@ -36,7 +36,7 @@ const KanjiCard = () => {
     kanjiData && (
       <main className="flex min-h-[calc(100dvh_-_60px)] flex-col items-center max-sm:items-stretch p-7">
         <div className="relative top-5 grid grid-cols-[0fr_1fr] gap-5 rounded border border-white border-opacity-35 p-5 backdrop-blur-md max-sm:grid-cols-1">
-          <aside className="flex flex-col gap-3 items-center ">
+          <aside className="flex flex-col max-sm:flex-row max-xs:flex-col gap-3 ">
             <section className="flex flex-col gap-3">
               <KanjiSvg svgSource={kanjiData.svg} KANJI={KANJI} />
               <Tags tags={{ jlpt: kanjiData.jlpt, grade: kanjiData.kgrade }} />
@@ -47,7 +47,7 @@ const KanjiCard = () => {
             </section>
           </aside>
           <section className="flex flex-col items-start">
-            <main className="flex flex-col gap-3">
+            <main className="flex flex-col gap-3 max-xs:self-stretch">
               <KanjiMeanings Meanings={kanjiData.kmeaning} />
               {/* <Examples examples={kanjiData.examples} /> */}
               <div className="flex flex-wrap gap-5">

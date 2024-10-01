@@ -78,7 +78,7 @@ export default function KanjiSvg({ svgSource, KANJI }) {
   }
 
   return (
-    <div className="group relative size-52 rounded border-2 bg-black bg-opacity-35 p-3 flex items-center justify-center">
+    <div className="group relative size-52 max-xs:size-full rounded border-2 bg-black bg-opacity-35 p-3 flex items-center justify-center">
       {!isLoading && !isError && (
         <>
           <Options
