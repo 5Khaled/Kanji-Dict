@@ -31,24 +31,28 @@ export default function Options({
       <button
         title="Replay"
         onClick={() => {
-          !isAnimating
-            ? playAnimation(svgKanji)
-            : console.log("Replay: is animating");
+          !isAnimating ? playAnimation(svgKanji) : "";
         }}
-        className="z-50 rounded bg-white bg-opacity-25 p-2 text-white transition-transform hover:bg-opacity-30 active:scale-95"
+        className={`z-50 rounded bg-white ${isAnimating ? "bg-opacity-15" : "bg-opacity-25 hover:bg-opacity-30"} p-2 text-white transition-transform`}
       >
-        <img src={replayIcon} alt="Replay" className="size-5" />
+        <img
+          src={replayIcon}
+          alt="Replay"
+          className={`${isAnimating ? "opacity-25" : ""} size-4`}
+        />
       </button>
       <button
         title="Toggle stroke order"
         onClick={() => {
-          !isAnimating
-            ? showStrokeOrder(svgKanji)
-            : console.log("Stroke: is animating");
+          !isAnimating ? showStrokeOrder(svgKanji) : "";
         }}
-        className="z-50 rounded bg-white bg-opacity-25 p-2 text-white transition-transform hover:bg-opacity-30 active:scale-95"
+        className={`z-50 rounded bg-white ${isAnimating ? "bg-opacity-15" : "bg-opacity-25 hover:bg-opacity-30"} p-2 text-white transition-transform`}
       >
-        <img src={orderIcon} alt="Replay" className="size-5" />
+        <img
+          src={orderIcon}
+          alt="Replay"
+          className={`${isAnimating ? "opacity-25" : ""} size-4`}
+        />
       </button>
     </div>
   );
