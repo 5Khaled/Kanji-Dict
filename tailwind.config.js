@@ -11,6 +11,7 @@ export default {
       },
     },
     screens: {
+      "2xs": "400px",
       xs: "500px",
       sm: "640px",
       md: "768px",
@@ -21,6 +22,10 @@ export default {
   },
   darkMode: "selector",
   plugins: [
+    function ({ addVariant }) {
+      // Add the `can-hover` media query using a plugin
+      addVariant("can-hover", "@media (hover: hover)");
+    },
     function ({ addUtilities }) {
       addUtilities({
         ".color-scheme-light": {

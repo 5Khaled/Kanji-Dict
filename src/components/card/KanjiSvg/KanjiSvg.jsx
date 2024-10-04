@@ -23,35 +23,37 @@ export default function KanjiSvg({ svgSource, KANJI }) {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-    }, 15);
+    }, 150);
   }, [svgSource]);
 
   function playAnimation(svgKanji) {
     setIsAnimating(true);
     SVG_FIGURE.current.style.visibility = "visible";
-    const strokeDuration = 0.4; // (Seconds)
-    const animationDelay = 1000; // MS
 
     const svgDoc = svgKanji.current.contentDocument;
     const paths = svgDoc.querySelectorAll("path");
     const texts = svgDoc.querySelectorAll("text");
 
     paths.forEach((path, index) => {
+      path.style.transition = "none";
+      path.style.stroke = "white";
       texts[index].style.opacity = 0;
       texts[index].style.fill = "white";
-      path.style.stroke = "white";
-      path.style.transition = "none";
     });
 
-    //Animate each stroke
-    paths.forEach((path, index) => {
-      path.style.strokeDashoffset = path.getTotalLength();
-      path.style.strokeDasharray = path.getTotalLength();
-      path.style.transition = `stroke-dashoffset ${strokeDuration}s ease ${index * strokeDuration}s`;
-      setTimeout(() => {
-        path.style.strokeDashoffset = 0;
-      }, animationDelay);
-    });
+    const strokeDuration = 0.4; // (Seconds)
+    const animationDelay = 1000; // MS
+    setTimeout(() => {
+      //Animate each stroke
+      paths.forEach((path, index) => {
+        path.style.strokeDashoffset = path.getTotalLength();
+        path.style.strokeDasharray = path.getTotalLength();
+        setTimeout(() => {
+          path.style.transition = `stroke-dashoffset ${strokeDuration}s ease ${index * strokeDuration}s`;
+          path.style.strokeDashoffset = 0;
+        }, animationDelay);
+      });
+    }, 0);
 
     // Show Stroke order number while each stroke being animated
     texts.forEach((text, index) => {
@@ -78,7 +80,7 @@ export default function KanjiSvg({ svgSource, KANJI }) {
   }
 
   return (
-    <div className="group relative size-52 max-xs:size-full rounded border-2 bg-black bg-opacity-35 p-3 flex items-center justify-center">
+    <div className="group relative size-52 max-xs:size-40 max-2xs:size-11/12 m-auto rounded border-2 bg-black bg-opacity-35 p-3 flex items-center justify-center">
       {!isLoading && !isError && (
         <>
           <Options

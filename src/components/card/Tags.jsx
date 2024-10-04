@@ -7,13 +7,13 @@ function KanjiTags({ tags }) {
   };
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2 m-auto">
       {Object.entries(tags).map(
         ([key, value], index) =>
           tags[key] && (
             <div
               key={index}
-              className="text-white text-sm rounded overflow-hidden flex"
+              className="text-white text-sm max-xs:text-xs rounded overflow-hidden flex"
             >
               <div className="bg-white bg-opacity-80 text-black font-bold px-2 py-1">
                 {Titles[key] || key}

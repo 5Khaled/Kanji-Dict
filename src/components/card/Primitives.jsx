@@ -43,10 +43,10 @@ function Primitives({ primitives, kanji, type }) {
               to={`/kanji/${p}`}
               className={`group ${
                 p === kanji ? "bg-white" : "bg-black"
-              } flex cursor-pointer items-center justify-center rounded border border-transparent bg-opacity-35 text-2xl hover:border-white`}
+              } flex cursor-pointer items-center justify-center rounded border border-transparent bg-opacity-35 text-2xl can-hover:hover:border-white`}
               key={i}
             >
-              <div className="transition-transform group-hover:scale-125">
+              <div className="transition-transform can-hover:group-hover:scale-125">
                 {p}
               </div>
             </Link>

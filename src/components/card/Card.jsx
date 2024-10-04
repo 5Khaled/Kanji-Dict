@@ -11,7 +11,6 @@ import Primitives from "./Primitives";
 import KanjiMeanings from "./Meanings";
 import Tags from "./Tags";
 import Readings from "./Readings";
-// import Examples from "./Examples";
 
 const KanjiCard = () => {
   const { id } = useParams();
@@ -36,20 +35,19 @@ const KanjiCard = () => {
     kanjiData && (
       <main className="flex min-h-[calc(100dvh_-_60px)] flex-col items-center max-sm:items-stretch p-7">
         <div className="relative top-5 grid grid-cols-[0fr_1fr] gap-5 rounded border border-white border-opacity-35 p-5 backdrop-blur-md max-sm:grid-cols-1">
-          <aside className="flex flex-col max-sm:flex-row max-xs:flex-col gap-3 ">
+          <aside className="flex flex-col max-sm:flex-row max-2xs:flex-col gap-3">
             <section className="flex flex-col gap-3">
               <KanjiSvg svgSource={kanjiData.svg} KANJI={KANJI} />
               <Tags tags={{ jlpt: kanjiData.jlpt, grade: kanjiData.kgrade }} />
             </section>
-            <section className="flex flex-col gap-3 self-start">
+            <section className="flex flex-col gap-3">
               <Readings readings={kanjiData.onyomi_ja} type="on" />
               <Readings readings={kanjiData.kunyomi_ja} type="kun" />
             </section>
           </aside>
           <section className="flex flex-col items-start">
-            <main className="flex flex-col gap-3 max-xs:self-stretch">
+            <main className="flex flex-col gap-3 max-sm:self-stretch">
               <KanjiMeanings Meanings={kanjiData.kmeaning} />
-              {/* <Examples examples={kanjiData.examples} /> */}
               <div className="flex flex-wrap gap-5">
                 <Primitives
                   primitives={kanjiData.in}
