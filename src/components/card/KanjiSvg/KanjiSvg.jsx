@@ -38,7 +38,7 @@ export default function KanjiSvg({ svgSource, KANJI }) {
       path.style.transition = "none";
       path.style.stroke = "white";
       texts[index].style.opacity = 0;
-      texts[index].style.fill = "white";
+      texts[index].style.fill = "silver";
     });
 
     const strokeDuration = 0.4; // (Seconds)
