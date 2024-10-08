@@ -16,11 +16,11 @@ function Index() {
   }, []);
 
   return (
-    <div className="flex h-full flex-col justify-center ">
-      <h1 className="mb-10 w-1/2 self-center text-center text-4xl font-extrabold text-white [text-shadow:_0_0_25px_rgb(0_0_0_/_50%)]">
+    <div className="flex h-full flex-col justify-center">
+      <h1 className="text-[clamp(1.25rem,0.609rem+4.1026vw,2.25rem)] mb-10 mx-5 self-center text-center font-extrabold text-white [text-shadow:_0_0_25px_rgb(0_0_0_/_50%)]">
         Type a Kanji to see its details and readings.
       </h1>
-      <section className="flex flex-col items-center gap-2">
+      <section className="flex flex-col items-center gap-5">
         <Search />
         {randomKanji && (
           <Link

@@ -14,13 +14,13 @@ const Search = () => {
   }
 
   return (
-    <div className="relative w-3/4 max-w-lg rounded-2xl flex">
+    <div className="relative flex">
       <input
         ref={searchRef}
         onChange={() => {
           setSearchParam(`/kanji/${searchRef.current.value}`);
         }}
-        className="bg-transparent backdrop-blur-lg text-white placeholder:text-white placeholder:text-opacity-40 caret-white grow py-2 px-4 rounded-s-2xl border border-white border-opacity-40 focus:border-opacity-70 outline-none transition-colors"
+        className="w-[clamp(9rem,-0.6154rem+61.5385vw,24rem)] bg-transparent backdrop-blur-lg text-white placeholder:text-white placeholder:text-opacity-40 caret-white grow py-2 px-4 rounded-none rounded-s-2xl border border-white border-opacity-40 focus:border-opacity-70 outline-none transition-colors"
         type="text"
         placeholder="Search Kanji"
       />
@@ -31,7 +31,9 @@ const Search = () => {
         }}
         to={searchParam}
       >
-        <div className="group-hover:scale-95 transition-transform">Search</div>
+        <div className="group-hover:scale-95 transition-transform max-sm:text-sm">
+          Search
+        </div>
       </Link>
     </div>
   );

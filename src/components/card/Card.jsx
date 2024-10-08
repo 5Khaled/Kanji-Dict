@@ -33,21 +33,29 @@ const KanjiCard = () => {
 
   return (
     kanjiData && (
-      <main className="flex min-h-[calc(100dvh_-_60px)] flex-col items-center max-sm:items-stretch p-7">
-        <div className="relative top-5 grid grid-cols-[0fr_1fr] gap-5 rounded border border-white border-opacity-35 p-5 backdrop-blur-md max-sm:grid-cols-1">
-          <aside className="flex flex-col max-sm:flex-row max-2xs:flex-col gap-3">
-            <section className="flex flex-col gap-3">
-              <KanjiSvg svgSource={kanjiData.svg} KANJI={KANJI} />
-              <Tags tags={{ jlpt: kanjiData.jlpt, grade: kanjiData.kgrade }} />
-            </section>
-            <section className="flex flex-col gap-3">
-              <Readings readings={kanjiData.onyomi_ja} type="on" />
-              <Readings readings={kanjiData.kunyomi_ja} type="kun" />
-            </section>
-          </aside>
-          <section className="flex flex-col items-start">
+      // min-h-[calc(100dvh_-_60px)]
+      <div className=" flex flex-col items-center max-sm:items-stretch p-7">
+        <main className="relative p-5 gap-3 grid grid-cols-[0fr_1fr] grid-rows-[repeat(3,auto)] items-start rounded border border-white border-opacity-35 backdrop-blur-md">
+          <section className="col-start-1 row-start-1 row-span-2 max-xs:row-start-2 max-xs:col-span-2 max-xs:row-span-1 flex flex-col max-xs:flex-row max-2xs:flex-col max-2xs:items-stretch gap-3">
+            <KanjiSvg svgSource={kanjiData.svg} KANJI={KANJI} />
+            <Tags
+              tags={{
+                jlpt: kanjiData.jlpt,
+                grade: kanjiData.kgrade,
+                strokes: kanjiData.kstroke,
+                radical: kanjiData.radical,
+              }}
+            />
+          </section>
+          <section className="max-xs:col-start-1 max-xs:row-start-1 max-xs:col-span-2">
+            <KanjiMeanings Meanings={kanjiData.kmeaning} />
+          </section>
+          <section className="col-start-1 row-start-3 max-xs:col-span-2 flex flex-col gap-3">
+            <Readings readings={kanjiData.onyomi_ja} type="on" />
+            <Readings readings={kanjiData.kunyomi_ja} type="kun" />
+          </section>
+          <section className="col-start-2 row-span-2 max-xs:col-start-1 max-xs:col-span-2 flex flex-col items-start">
             <main className="flex flex-col gap-3 max-sm:self-stretch">
-              <KanjiMeanings Meanings={kanjiData.kmeaning} />
               <div className="flex flex-wrap gap-5">
                 <Primitives
                   primitives={kanjiData.in}
@@ -62,8 +70,8 @@ const KanjiCard = () => {
               </div>
             </main>
           </section>
-        </div>
-      </main>
+        </main>
+      </div>
     )
   );
 };

@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
+import fluid, { extract } from "fluid-tailwind";
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: {
+    files: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    extract,
+  },
   theme: {
     extend: {
       keyframes: {
@@ -22,6 +26,7 @@ export default {
   },
   darkMode: "selector",
   plugins: [
+    fluid,
     function ({ addVariant }) {
       // Add the `can-hover` media query using a plugin
       addVariant("can-hover", "@media (hover: hover)");

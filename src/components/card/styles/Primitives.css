@@ -15,7 +15,10 @@
   background: #ffffff70;
 }
 .scrollbar-hide::-webkit-scrollbar-thumb:hover {
-  background: #cfcfcf;
+  background: #ffffffa8;
+}
+.scrollbar-hide::-webkit-scrollbar-thumb:active {
+  background: #ffffff;
 }
 
 /* For IE, Edge and Firefox */

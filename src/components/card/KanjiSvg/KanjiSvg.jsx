@@ -80,7 +80,7 @@ export default function KanjiSvg({ svgSource, KANJI }) {
   }
 
   return (
-    <div className="group relative size-52 max-xs:size-40 max-2xs:size-11/12 m-auto rounded border-2 bg-black bg-opacity-35 p-3 flex items-center justify-center">
+    <div className="group relative p-3 size-52 max-sm:size-40 max-2xs:size-full shrink-0 rounded border-2 bg-black bg-opacity-35 flex items-center justify-center">
       {!isLoading && !isError && (
         <>
           <Options
