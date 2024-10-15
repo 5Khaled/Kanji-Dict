@@ -8,10 +8,46 @@
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
     <title>Kanji Dict</title>
-    <script type="module" crossorigin src="/assets/index-Cjwd4A40.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CJ0Bg95e.css">
+    <!-- Fonts -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+    /></noscript>
+    <!-- Critical CSS -->
+    <style>
+      body {
+        font-family: "Lexend", sans-serif;
+        font-display: swap;
+      }
+      .no-js {
+        text-align: center;
+        margin-top: 20%;
+      }
+      .no-js h1 {
+        font-size: 2rem;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-DlITfjRl.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Ec86OYlO.css">
   </head>
-  <body class="bg-emerald-600">
-    <div id="root" class="dark:color-scheme-dark"></div>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <div class="no-js">
+        <h1>JavaScript Required</h1>
+        <p>
+          We're sorry, but this application requires JavaScript to function
+          correctly. Please enable JavaScript in your browser and reload the
+          page.
+        </p>
+      </div>
+    </noscript>
   </body>
 </html>
