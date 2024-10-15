@@ -38,18 +38,16 @@ function RandomKanji() {
 
   return (
     <>
-      {randomKanji && (
-        <Link
-          className="group rounded-lg border border-white border-opacity-40 bg-transparent backdrop-blur-lg transition-scale duration-300 hover:border-opacity-70 active:scale-95"
-          to={`/kanji/${randomKanji}`}
-        >
-          <img
-            className="size-10 opacity-40 p-1.5 transition-opacity duration-300 group-hover:opacity-70"
-            src="/src/assets/dice.svg"
-            alt=""
-          />
-        </Link>
-      )}
+      <Link
+        className="group rounded-lg border border-white border-opacity-40 bg-transparent backdrop-blur-lg transition-scale duration-300 hover:border-opacity-70 active:scale-95"
+        to={`/kanji/${randomKanji}`}
+      >
+        <img
+          className="size-10 opacity-40 p-1.5 transition-opacity duration-300 group-hover:opacity-70"
+          src="/dice.svg"
+          alt=""
+        />
+      </Link>
     </>
   );
 }

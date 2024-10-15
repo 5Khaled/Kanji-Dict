@@ -1,8 +1,5 @@
 import PropTypes from "prop-types";
 
-import replayIcon from "../../../assets/replay.svg";
-import orderIcon from "../../../assets/order.svg";
-
 export default function Options({
   playAnimation,
   isAnimating,
@@ -43,7 +40,7 @@ export default function Options({
           `}
       >
         <img
-          src={replayIcon}
+          src="/replay.svg"
           alt="Replay"
           className={`${isAnimating ? "opacity-50" : ""} size-4`}
         />
@@ -60,7 +57,7 @@ export default function Options({
           `}
       >
         <img
-          src={orderIcon}
+          src="/order.svg"
           alt="Order"
           className={`${isAnimating ? "opacity-50" : ""} size-4`}
         />
