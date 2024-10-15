@@ -1,9 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-import fluid, { extract } from "fluid-tailwind";
 export default {
   content: {
     files: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-    extract,
   },
   theme: {
     extend: {
@@ -12,6 +10,16 @@ export default {
           "0%": { transform: "translateY(-10vh)" },
           "100%": { transform: "translateY(110vh)" },
         },
+      },
+      fontSize: {
+        "2xs": "0.5rem",
+      },
+      minHeight: {
+        "outlet-dvh": "calc(100dvh - 60px)",
+      },
+      fontFamily: {
+        mplus: ["Mplus1M", "sans-serif"],
+        japaneseRadicals: ["JapaneseRadicals", "sans-serif"],
       },
     },
     screens: {
@@ -26,9 +34,7 @@ export default {
   },
   darkMode: "selector",
   plugins: [
-    fluid,
     function ({ addVariant }) {
-      // Add the `can-hover` media query using a plugin
       addVariant("can-hover", "@media (hover: hover)");
     },
     function ({ addUtilities }) {

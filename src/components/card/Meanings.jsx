@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 function KanjiMeanings({ Meanings }) {
   return (
-    <div className="transition-all flex flex-col overflow-hidden rounded text-white max-sm:text-sm">
+    <div className="flex flex-col overflow-hidden rounded text-white max-sm:text-sm">
       <header className="bg-white bg-opacity-100 px-10 py-2 font-bold text-black flex justify-center">
         Meanings
       </header>

@@ -1,22 +1,24 @@
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 
-export default function MainSVG({ svgSource, playAnimation, svgKanji }) {
+export default function MainSVG({ svgContent, playAnimation, SvgHolder }) {
+  useEffect(() => {
+    playAnimation(SvgHolder);
+  }, [playAnimation, SvgHolder]);
   return (
-    <>
-      <object
-        onLoad={() => {
-          playAnimation(svgKanji);
-        }}
-        ref={svgKanji}
-        className="w-full select-none rounded color-scheme-light"
-        type="image/svg+xml"
-        data={`/src/kanji_data/kanji_svgs/${svgSource}`}
+    svgContent && (
+      <div
+        ref={SvgHolder}
+        dangerouslySetInnerHTML={{ __html: svgContent }}
+        className={`
+          w-full select-none rounded color-scheme-light z-10
+          [&>svg]:size-full [&_path]:stroke-white [&_text]:fill-slate-300 [&_text]:text-2xs [&_text]:hidden`}
       />
-    </>
+    )
   );
 }
 MainSVG.propTypes = {
-  svgSource: PropTypes.string,
-  svgKanji: PropTypes.object,
+  svgContent: PropTypes.string,
+  SvgHolder: PropTypes.object,
   playAnimation: PropTypes.func,
 };

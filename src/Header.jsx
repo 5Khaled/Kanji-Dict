@@ -1,12 +1,23 @@
-// import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <header className="sticky top-0 z-20 bg-transparent w-full flex justify-between items-center p-2 backdrop-blur shadow-sm">
+    <header className="sticky top-0 z-20 bg-transparent w-full flex items-center gap-5 p-2 backdrop-blur shadow-sm">
       <Link to="/">
-        <h1 className="text-white text-xl font-bold p-2">Kanji Dictionary</h1>
+        <h1 className="text-white text-xl font-bold p-2 text-nowrap">
+          Kanji Dictionary
+        </h1>
       </Link>
+      <nav className={`basis-full flex flex-row-reverse px-5`}>
+        <Link to="/about">
+          <h1
+            id="about"
+            className={`text-white text-opacity-75 can-hover:hover:underline can-hover:hover:text-opacity-100 font-`}
+          >
+            About
+          </h1>
+        </Link>
+      </nav>
     </header>
   );
 }

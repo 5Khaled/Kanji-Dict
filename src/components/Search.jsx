@@ -20,7 +20,7 @@ const Search = () => {
         onChange={() => {
           setSearchParam(`/kanji/${searchRef.current.value}`);
         }}
-        className="w-[clamp(9rem,-0.6154rem+61.5385vw,24rem)] bg-transparent backdrop-blur-lg text-white placeholder:text-white placeholder:text-opacity-40 caret-white grow py-2 px-4 rounded-none rounded-s-2xl border border-white border-opacity-40 focus:border-opacity-70 outline-none transition-colors"
+        className="w-[clamp(100%,-0.6154rem+61.5385vw,24rem)] bg-transparent backdrop-blur-lg text-white placeholder:text-white placeholder:text-opacity-40 caret-white py-2 px-4 rounded-none rounded-s-2xl border border-white border-opacity-40 focus:border-opacity-70 outline-none transition-colors"
         type="text"
         placeholder="Search Kanji"
       />

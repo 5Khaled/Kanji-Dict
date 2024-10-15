@@ -1,42 +1,55 @@
 import Search from "./components/Search";
 import { Link } from "react-router-dom";
-import KanjiData from "./kanji_data/ALL_KANJI.json";
 import { useEffect, useState } from "react";
 
 function Index() {
-  const [randomKanji, setRandomKanji] = useState(null);
-  useEffect(() => {
-    const getRandomElement = (kanjis) => {
-      const arr = Object.values(kanjis);
-      const randomIndex = Math.floor(Math.random() * arr.length);
-
-      return arr[randomIndex].kanji;
-    };
-    setRandomKanji(getRandomElement(KanjiData));
-  }, []);
-
   return (
-    <div className="flex h-full flex-col justify-center">
-      <h1 className="text-[clamp(1.25rem,0.609rem+4.1026vw,2.25rem)] mb-10 mx-5 self-center text-center font-extrabold text-white [text-shadow:_0_0_25px_rgb(0_0_0_/_50%)]">
+    <div className="min-h-outlet-dvh flex flex-col justify-center">
+      <h1 className="text-[clamp(1.25rem,0.609rem+4.1026vw,2.25rem)] max-w-xl mb-10 mx-7 self-center text-center font-extrabold text-white drop-shadow-lg">
         Type a Kanji to see its details and readings.
       </h1>
       <section className="flex flex-col items-center gap-5">
         <Search />
-        {randomKanji && (
-          <Link
-            className="group rounded-lg border border-white border-opacity-40 bg-transparent backdrop-blur-lg transition-all duration-300 hover:border-opacity-70 active:scale-95"
-            to={`/kanji/${randomKanji}`}
-          >
-            <img
-              className="size-10 opacity-40 p-1.5 transition-opacity duration-300 group-hover:opacity-70"
-              src="/src/assets/dice.svg"
-              alt=""
-            />
-          </Link>
-        )}
+        <RandomKanji />
       </section>
     </div>
   );
 }
 
 export default Index;
+
+function RandomKanji() {
+  const [randomKanji, setRandomKanji] = useState(null);
+
+  useEffect(() => {
+    const fetchRandomKanji = async () => {
+      try {
+        const response = await fetch("https://kanji.vwh.sh/random");
+        if (response.ok) {
+          const kanji = await response.text(); // Since the response is just a kanji character
+          setRandomKanji(kanji);
+        }
+      } catch (err) {
+        console.error("Failed to load a Random Kanji");
+      }
+    };
+    fetchRandomKanji();
+  }, []);
+
+  return (
+    <>
+      {randomKanji && (
+        <Link
+          className="group rounded-lg border border-white border-opacity-40 bg-transparent backdrop-blur-lg transition-scale duration-300 hover:border-opacity-70 active:scale-95"
+          to={`/kanji/${randomKanji}`}
+        >
+          <img
+            className="size-10 opacity-40 p-1.5 transition-opacity duration-300 group-hover:opacity-70"
+            src="/src/assets/dice.svg"
+            alt=""
+          />
+        </Link>
+      )}
+    </>
+  );
+}

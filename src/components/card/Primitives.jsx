@@ -37,7 +37,7 @@ function Primitives({ primitives, kanji, type }) {
         {kanjis ? primitives?.length : "0"})
       </header>
       {kanjis && (
-        <section className="text-2xl max-sm:text-xl [&>*]:transition-all [&>*]:size-14 max-sm:[&>*]:size-12 scrollbar-hide gap-2 max-h-64 grid grid-cols-[repeat(4,auto)] content-start overflow-x-hidden pr-1 text-white">
+        <section className="text-2xl max-sm:text-xl [&>*]:size-14 max-sm:[&>*]:size-12 scrollbar-hide gap-2 max-h-64 grid grid-cols-[repeat(4,auto)] content-start overflow-x-hidden pr-1 text-white">
           {kanjis.map((p, i) => (
             <Link
               to={`/kanji/${p}`}
@@ -46,20 +46,22 @@ function Primitives({ primitives, kanji, type }) {
               } flex cursor-pointer items-center justify-center rounded border border-transparent bg-opacity-35 can-hover:hover:border-white`}
               key={i}
             >
-              <div className="can-hover:group-hover:scale-125">{p}</div>
+              <div className="can-hover:group-hover:scale-125 transition-transform">
+                {p}
+              </div>
             </Link>
           ))}
           {showToggleButton && (
             <button
               onClick={handleToggle}
-              className="text-sm max-sm:text-xs flex cursor-pointer items-center justify-center rounded bg-white bg-opacity-30 hover:bg-opacity-35 active:scale-95"
+              className="text-sm max-sm:text-xs flex cursor-pointer items-center justify-center rounded bg-white bg-opacity-30 hover:bg-opacity-35 active:scale-95 transition-transform"
             >
               <div className="py-1.5">
                 {toggled ? (
                   "Less"
                 ) : (
                   <div>
-                    More <br />({primitives.length - 7})
+                    More <br />({primitives?.length - 7})
                   </div>
                 )}
               </div>

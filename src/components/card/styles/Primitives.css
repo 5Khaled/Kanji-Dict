@@ -3,6 +3,12 @@
 .scrollbar-hide {
   scrollbar-gutter: stable;
 }
+@-moz-document url-prefix() {
+  .scrollbar-hide {
+    scrollbar-color: #ffffff70 #ffffff35;
+    scrollbar-width: thin;
+  }
+}
 
 .scrollbar-hide::-webkit-scrollbar {
   /* display: none; */

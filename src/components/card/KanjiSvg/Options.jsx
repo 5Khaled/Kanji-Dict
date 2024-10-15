@@ -5,53 +5,64 @@ import orderIcon from "../../../assets/order.svg";
 
 export default function Options({
   playAnimation,
-  svgKanji,
+  isAnimating,
+  SvgHolder,
   strokeOrderToggled,
   setStrokeOrderToggled,
-  isAnimating,
+  manualToggleRef,
 }) {
-  function showStrokeOrder(svgKanji) {
-    const svgDoc = svgKanji.current.contentDocument;
-    const texts = svgDoc.querySelectorAll("text");
+  function showStrokeOrder() {
+    const SVG = SvgHolder.current.querySelector("svg");
+    const texts = SVG.querySelectorAll("text");
+
     if (strokeOrderToggled) {
       texts.forEach((text) => {
-        text.style.opacity = 0;
+        text.style.display = "none";
         setStrokeOrderToggled(false);
+        manualToggleRef.current = false;
       });
     } else {
       texts.forEach((text) => {
-        text.style.opacity = 1;
+        text.style.display = "block";
         setStrokeOrderToggled(true);
+        manualToggleRef.current = true;
       });
     }
   }
 
   return (
-    <div className="absolute left-0 top-0 z-10 flex h-full w-full items-start gap-1 bg-black p-1.5 opacity-0 group-hover:bg-opacity-10 group-hover:opacity-100">
+    <div className="absolute left-0 top-0 z-20 flex h-full w-full items-start gap-1 bg-black p-1.5 opacity-0 group-hover:bg-opacity-10 group-hover:opacity-100">
       <button
         title="Replay"
         onClick={() => {
-          !isAnimating ? playAnimation(svgKanji) : "";
+          !isAnimating ? playAnimation(SvgHolder) : "";
         }}
-        className={`z-50 rounded bg-white ${isAnimating ? "bg-opacity-15" : "bg-opacity-25 hover:bg-opacity-30"} p-2 text-white transition-transform`}
+        className={`
+          border border-transparent z-50 rounded bg-white p-2 text-white transition-transform bg-opacity-25 
+          ${isAnimating ? "opacity-50" : "opacity-100 hover:bg-opacity-30"}
+          `}
       >
         <img
           src={replayIcon}
           alt="Replay"
-          className={`${isAnimating ? "opacity-25" : ""} size-4`}
+          className={`${isAnimating ? "opacity-50" : ""} size-4`}
         />
       </button>
       <button
         title="Toggle stroke order"
         onClick={() => {
-          !isAnimating ? showStrokeOrder(svgKanji) : "";
+          !isAnimating ? showStrokeOrder() : "";
         }}
-        className={`z-50 rounded bg-white ${isAnimating ? "bg-opacity-15" : "bg-opacity-25 hover:bg-opacity-30"} p-2 text-white transition-transform`}
+        className={`
+          z-50 rounded bg-white p-2 text-white transition-transform bg-opacity-25 
+          ${isAnimating ? "opacity-50" : "opacity-100 hover:bg-opacity-30"}
+          ${strokeOrderToggled ? "border border-white border-opacity-75" : "border border-transparent"}
+          `}
       >
         <img
           src={orderIcon}
-          alt="Replay"
-          className={`${isAnimating ? "opacity-25" : ""} size-4`}
+          alt="Order"
+          className={`${isAnimating ? "opacity-50" : ""} size-4`}
         />
       </button>
     </div>
@@ -59,9 +70,10 @@ export default function Options({
 }
 
 Options.propTypes = {
-  svgKanji: PropTypes.object,
+  SvgHolder: PropTypes.object,
   playAnimation: PropTypes.func,
   strokeOrderToggled: PropTypes.bool,
   setStrokeOrderToggled: PropTypes.func,
   isAnimating: PropTypes.bool,
+  manualToggleRef: PropTypes.object, // Ref is an object with a `current` property
 };
