@@ -5,7 +5,7 @@ function Header() {
     <header className="sticky top-0 z-20 bg-transparent w-full flex items-center gap-5 p-2 backdrop-blur shadow-sm">
       <Link to="/">
         <h1 className="text-white text-xl font-bold p-2 text-nowrap">
-          Kanji Dictionary
+          Kandiction
         </h1>
       </Link>
       <nav className={`basis-full flex flex-row-reverse px-5`}>
