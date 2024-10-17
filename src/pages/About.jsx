@@ -12,13 +12,13 @@ function About() {
     },
     data: {
       title: "Kanji Data",
-      link: "https://github.com/kanjialive/kanji-data-media/tree/master/language-data",
+      link: "https://github.com/kanjialive/kanji-data-media",
       text: "Sourced from Kanji alive. Licensed under Creative Commons Attribution 4.0.",
     },
     composition: {
       title: "Kanji Composition",
-      link: "https://github.com/gabor-kovacs/the-kanji-map/blob/main/data/composition.json",
-      text: "Data from the Kanji Map.",
+      link: "https://github.com/gabor-kovacs/the-kanji-map",
+      text: "Kanji Composition Data from The-Kanji-Map.",
     },
   };
 
@@ -39,13 +39,11 @@ function About() {
         <ul className="flex flex-col gap-3 my-3 pl-1.5">
           {Object.values(Sources).map((source, index) => (
             <li className="group" key={index}>
-              <strong className="flex items-center text-white text-opacity-85 underline">
-                <a href={source.link}>{source.title}</a>
-                <img
-                  className="mx-1 size-5 opacity-85"
-                  src="/external-link.svg"
-                  alt=""
-                />
+              <strong className="flex items-center text-white underline can-hover:opacity-85  can-hover:group-hover:opacity-100">
+                <a href={source.link} target="_blank">
+                  {source.title}
+                </a>
+                <img className="mx-1 size-5" src="/external-link.svg" alt="" />
               </strong>
               <p className="text-white text-opacity-85">{source.text}</p>
             </li>

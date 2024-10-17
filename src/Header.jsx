@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <header className="sticky top-0 z-20 bg-transparent w-full flex items-center gap-5 p-2 backdrop-blur shadow-sm">
-      <Link to="/">
-        <h1 className="text-white text-xl font-bold p-2 text-nowrap">
-          Kandiction
-        </h1>
+      <Link className="flex items-center m-2 gap-2" to="/">
+        <img className="size-7" src="/kandiction_logo_white.svg" alt="" />
+        <h1 className="text-white text-xl font-bold">Kandiction</h1>
       </Link>
-      <nav className={`basis-full flex flex-row-reverse px-5`}>
+      <nav className={`grow flex flex-row-reverse px-5`}>
         <Link to="/about">
           <h1
             id="about"
