@@ -39,7 +39,7 @@ function RandomKanji() {
   return (
     <>
       <Link
-        className="group rounded-lg border border-white border-opacity-40 bg-transparent backdrop-blur-lg transition-scale duration-300 hover:border-opacity-70 active:scale-95"
+        className={`${randomKanji ? "visible" : "invisible"} group rounded-lg border border-white border-opacity-40 bg-transparent backdrop-blur-lg transition-scale duration-300 hover:border-opacity-70 active:scale-95`}
         to={`/kanji/${randomKanji}`}
       >
         <img
