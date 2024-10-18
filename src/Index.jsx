@@ -1,6 +1,6 @@
 import Search from "./components/Search";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Index() {
   return (
@@ -19,35 +19,42 @@ function Index() {
 export default Index;
 
 function RandomKanji() {
-  const [randomKanji, setRandomKanji] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchRandomKanji = async () => {
-      try {
-        const response = await fetch("https://kanji.vwh.sh/random");
-        if (response.ok) {
-          const kanji = await response.text(); // Since the response is just a kanji character
-          setRandomKanji(kanji);
-        }
-      } catch (err) {
-        console.error("Failed to load a Random Kanji");
+  const handleClick = async () => {
+    console.log("CLick!");
+
+    setLoading(true);
+
+    try {
+      const response = await fetch("https://kanji.vwh.sh/random");
+      if (response.ok) {
+        const kanji = await response.text();
+        setLoading(false);
+        navigate(`/kanji/${kanji}`);
       }
-    };
-    fetchRandomKanji();
-  }, []);
+    } catch (err) {
+      console.error("Failed to load a Random Kanji");
+      setLoading(false);
+    }
+  };
 
   return (
     <>
-      <Link
-        className={`${randomKanji ? "visible" : "invisible"} group rounded-lg border border-white border-opacity-40 bg-transparent backdrop-blur-lg transition-scale duration-300 hover:border-opacity-70 active:scale-95`}
-        to={`/kanji/${randomKanji}`}
+      <button
+        onClick={handleClick}
+        className={`${
+          loading ? "opacity-50" : "opacity-100"
+        } group rounded-lg border border-white border-opacity-40 bg-transparent backdrop-blur-lg transition-colors transition-scale hover:border-opacity-70`}
+        disabled={loading}
       >
         <img
-          className="size-10 opacity-40 p-1.5 transition-opacity duration-300 group-hover:opacity-70"
+          className="size-10 opacity-40 p-1.5 transition-opacity group-hover:opacity-70"
           src="/dice.svg"
           alt=""
         />
-      </Link>
+      </button>
     </>
   );
 }
